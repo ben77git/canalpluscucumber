@@ -10,7 +10,10 @@
     <packaging>jar</packaging>
 
     <properties>
-        <cucumber.version>4.2.6</cucumber.version>
+        <cucumber.version>4.2.0</cucumber.version>
+        <serenity.version>2.0.64</serenity.version>
+        <serenity.cucumber.version>1.0.19</serenity.cucumber.version>
+        <wiremock.version>2.6.0</wiremock.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -28,6 +31,25 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber4</artifactId>
+            <version>${serenity.cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -35,6 +57,49 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+            <scope>test</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.github.tomakehurst</groupId>
+		    <artifactId>wiremock-jre8-standalone</artifactId>
+		    <version>2.25.1</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-simple</artifactId>
+		    <version>1.7.28</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.6.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+		
     </dependencies>
 
     <build>
@@ -49,6 +114,42 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+<!--             <plugin> -->
+<!-- 			    <groupId>net.serenity-bdd.maven.plugins</groupId> -->
+<!-- 			    <artifactId>serenity-maven-plugin</artifactId> -->
+<!-- 			    <version>1.2.5-rc.6</version> -->
+<!-- 			    <executions> -->
+<!-- 			        <execution> -->
+<!-- 			            <id>serenity-reports</id> -->
+<!-- 			            <phase>post-integration-test</phase> -->
+<!-- 			            <goals> -->
+<!-- 			                <goal>aggregate</goal> -->
+<!-- 			            </goals> -->
+<!-- 			        </execution> -->
+<!-- 			    </executions> -->
+<!-- 			</plugin> -->
+
+			<plugin>
+				<groupId>net.serenity-bdd.maven.plugins</groupId>
+				<artifactId>serenity-maven-plugin</artifactId>
+				<version>2.0.70</version>
+				<executions>
+					<execution>
+						<id>serenity-reports</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>net.serenity-bdd</groupId>
+						<artifactId>serenity-core</artifactId>
+						<version>2.0.70</version>
+					</dependency>
+				</dependencies>
+			</plugin>
         </plugins>
     </build>
 </project>
