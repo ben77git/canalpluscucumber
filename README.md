@@ -4,8 +4,10 @@ Implémentation d'un scénario Cucumber de modification d'adresse
 ## Description
 Le projet **_canalpluscucumber_** implémente un scénario Cucumber de modification d'adresse d'un abonné Canal+ en
 utilisant la plateforme **Spring Boot** avec **Java**, **Cucumber** et **Maven**.
+
 Nous utilisons **WireMock** pour simuler l'api Canal+ de gestion d'un abonné proposant des fonctionnalités de 
 création d'abonnés et de modification d'adresse d'abonnés.
+
 **Serenity BDD** permet de décrire les actions effectuées sur notre api Canal+ en vue de la réalisation de notre scénario,
 il produira également des rapports des resultats des tests ainsi qu'une documentation évolutive décrivant
 les exigences et les comportements de l'application.
@@ -47,16 +49,16 @@ cd canalpluscucumber
 `mvn clean verify`
 
 ## Spécifications techniques :
-Java 8
-Maven 3.3.1
-Git
-Spring boot
-Cucumber 4
-Serenity BDD 2
-WireMock 2
-Junit 4
-Okhttp 3
-Assertj 3
+- Java 8
+- Maven 3.3.1
+- Git
+- Spring boot
+- Cucumber 4
+- Serenity BDD 2
+- WireMock 2
+- Junit 4
+- Okhttp 3
+- Assertj 3
 
 ## Auteur :
 [Benoît NJONKOU](mailto:benoit.n.pro@gmail.com)
